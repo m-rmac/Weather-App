@@ -1,0 +1,12 @@
+Bayswater = (-36.815197, 174.767506)
+Cheltenham = (-36.81392, 174.89138)
+Orewa = (-36.582190, 174.696759) (N or NE)
+Shoal Bay = (-36.80727115952904, 174.76621949021768)(SW)
+Muriwai = (-36.820376, 174.420699)(NW or SW)
+St Heliers = (-36.848516, 174.856328)(NW-N)
+Shakespeare Regional Park = (SE-SW)
+The Spit() = (-36.872585,174.881923)(S)
+
+Test Location
+
+33.44, -94.04
