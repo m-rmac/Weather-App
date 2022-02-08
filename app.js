@@ -9,10 +9,25 @@ const handlebars = require("express-handlebars");
 app.engine("handlebars",
     handlebars({
         defaultLayout: "main",
+        helpers:{
+            unixConvert: (unix) => new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' })
+        }
     })
 );
 
+
 app.set("view engine", "handlebars");
+
+
+// register new function
+
+// handlebars.registerHelper('unixConvert', function (unix) {
+//     var time = new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' });
+    
+//     return time;
+// });
+
+
 
 // Setup body-parser
 app.use(express.urlencoded({extended:false}));
@@ -21,12 +36,6 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(express.static(__dirname + '/public'));
 
-// When navigating to "/", show the homepage.
-// app.get("/", function (req, res) {
-
-
-//     res.render("home");
-// });
 
 // Setup routes
 app.use(require("./routes/application-routes"));

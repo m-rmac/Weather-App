@@ -8,14 +8,12 @@ const router = express.Router();
 const fs = require('fs');
 
 
-// const apiKey = process.env.API_KEY;
-
 // Home 
 
 router.get("/",  async (req, res) => {
 
     let test = await data.retrieveWeather(-36.848516, 174.856328);
-    console.log(test);
+    // console.log(test);
 
     let sunrise = test.timezone;
 
@@ -24,6 +22,22 @@ router.get("/",  async (req, res) => {
 res.render("home");
 
 }); 
+
+router.get("/weather", async (req, res) => {
+
+    let test = await data.retrieveWeather(-36.848516, 174.856328);
+    console.log(test);
+    res.locals.location = test.timezone;
+
+    let dateTest = data.unixDateExtraction(test.current.dt);
+    console.log(dateTest);
+
+    res.locals.hourly = test.hourly;
+
+    res.render("weatherDisplay");
+
+});
+
 
 
 

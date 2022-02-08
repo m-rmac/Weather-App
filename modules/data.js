@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 async function retrieveWeather(lat, lon){
 
-    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.API_KEY}`;
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.API_KEY}&units=metric`;
     
     try{
 
@@ -32,7 +32,38 @@ function extractData(data){
     return data.timezone;
 }
 
+function arrayExtractor(array){
+
+    let list=" ";
+
+        for (let i = 0; i < array.length; i++) {
+            list += `${array[i]}`;
+
+            if(i>= (array.length - 1)){
+                list +=".";
+            }else{
+                list +=", ";
+            }
+        }
+
+        return list;
+        // console.log(list);
+}
+
+function unixDateExtraction(unix){
+    // var date = new Date(unix*1000).toLocaleDateString("en-US");
+    var time = new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' });
+    
+    return time;
+    
+}
+
+
+
 
 module.exports = {
     retrieveWeather,
-    extractData};
+    extractData,
+    arrayExtractor,
+    unixDateExtraction
+};
