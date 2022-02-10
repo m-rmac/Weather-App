@@ -1,6 +1,6 @@
-<h1>TEST THAT THE PAGE WORKS</h1>
+<p id="paraTest">TEST</p>
 
-<div class="container">
+<div class="container" id="weatherForm" style="padding-top: 20px; padding-bottom: 20px;">
 <div class="card">
     <div class="card-header">
         {{#if location}} {{location}} {{else}} LOCATION {{/if}}
@@ -17,26 +17,26 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        {{!-- <th>Date</th> --}}
                         <th>Time</th>
                         <th>Wind Direction</th>
                         <th>Wind Speed</th>
                         <th>Tempreture</th>
                         <th>Clouds</th>
                         <th>Visibility</th>
-                        {{!-- <th>Sunset</th> --}}
                     </tr>
                 </thead>
 
                 <tbody>
                     {{#each hourly}}
                     <tr>
-                        <td>{{unixConvert this.dt}}</td>
-                        <td>{{this.wind_deg}}</td>
+                        {{!-- <td>{{foo}}</td> --}}
+                        <td>{{unixDate this.dt}} <br> {{unixTime this.dt}}</td>
+                        <td>{{this.wind_deg}} <br> {{getCardinalDirections this.wind_deg}}</td>
                         <td>{{this.wind_speed}}</td>
-                        <td>{{this.temp}}</td>
+                        <td>{{this.temp}} &#176;C</td>
                         <td>{{this.clouds}}</td>
                         <td>{{this.visibility}}</td>
-                        {{!-- <td>{{this.weather}}</td> --}}
                     </tr>
                     {{/each}}
                 </tbody>

@@ -8,21 +8,28 @@
         {{!-- <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
         <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> --}}
 
-        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg">
-            <option value="" selected disabled>Please select your destination</option>
-            <option value="1">Bayswater </option>
-            <option value="2">Cheltenham</option>
-            <option value="3">Orewa</option>
-            <option value="4">Shoal Bay</option>
-            <option value="5">Muriwai</option>
-            <option value="6">St Heliers</option>
-            <option value="7">Shakespeare Regional Park</option>
-            <option value="8">The Spit</option>
-        </select>
 
-        <button type="submit" class="btn btn-primary">
-            <i class="fas fa-arrow-right" style="color: white;"></i>
-            </button>
+          <div class="weatherSelectorForm">
+
+              <form action="./weather" method="POST">
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg" id="Form-Dropdown" name="location">
+                    <option value="" selected disabled>Please select your destination</option>
+                    <option value="Bayswater">Bayswater </option>
+                    <option value="Cheltenham">Cheltenham</option>
+                    <option value="Orewa">Orewa</option>
+                    <option value="Shoal Bay">Shoal Bay</option>
+                    <option value="Muriwai">Muriwai</option>
+                    <option value="St Heliers">St Heliers</option>
+                    <option value="Shakespeare Regional Park">Shakespeare Regional Park</option>
+                    <option value="The Spit">The Spit</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-arrow-right" style="color: white;"></i>
+                </button>
+              </form>
+            </div>
+
 
       </div>
      

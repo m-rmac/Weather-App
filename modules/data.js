@@ -58,12 +58,28 @@ function unixDateExtraction(unix){
     
 }
 
+function degToCompass(num) {
+    var val = Math.floor((num / 22.5) + 0.5);
+    var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+    return arr[(val % 16)];
+}
 
+function getCardinalDirection(angle) {
+    const directions = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
+    return directions[Math.round(angle / 45) % 8];
+}
+
+module.exports.register = function (Handlebars, options)  { 
+    Handlebars.registerHelper('foo', function (str)  { 
+      return  str;
+    });
+  };
 
 
 module.exports = {
     retrieveWeather,
     extractData,
     arrayExtractor,
-    unixDateExtraction
+    unixDateExtraction,
+    degToCompass
 };

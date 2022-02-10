@@ -10,23 +10,16 @@ app.engine("handlebars",
     handlebars({
         defaultLayout: "main",
         helpers:{
-            unixConvert: (unix) => new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' })
+            unixTime: (unix) => new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' }),
+            unixDate: (unix) => new Date(unix*1000).toLocaleDateString("en-NZ", { timeZone: 'Pacific/Auckland' }),
+            getCardinalDirections: (angle) => {const directions = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
+            return directions[Math.round(angle / 45) % 8]}
         }
     })
 );
 
 
 app.set("view engine", "handlebars");
-
-
-// register new function
-
-// handlebars.registerHelper('unixConvert', function (unix) {
-//     var time = new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' });
-    
-//     return time;
-// });
-
 
 
 // Setup body-parser
