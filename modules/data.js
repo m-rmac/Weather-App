@@ -11,10 +11,6 @@ async function retrieveWeather(lat, lon){
 
     let weatherData = await weatherRetrieve.json();
 
-    // console.log(weatherData);
-
-    // extractData(weatherData);
-
     return weatherData;
 
     } catch (error) {
@@ -34,20 +30,33 @@ function extractData(data){
 
 function arrayExtractor(array){
 
-    let list=" ";
+    // let list=" ";
 
-        for (let i = 0; i < array.length; i++) {
-            list += `${array[i]}`;
+    //     for (let i = 0; i < array.length; i++) {
+    //         list += `${array[1]}.weather`;
 
-            if(i>= (array.length - 1)){
-                list +=".";
-            }else{
-                list +=", ";
-            }
+    //         for(var property in weather) {
+    //             alert(property + "=" + weather[property]);
+    //         }
+
+    //         if(i>= (array.length - 1)){
+    //             list +=".";
+    //         }else{
+    //             list +=", ";
+    //         }
+    //     }
+
+    //     return list;
+    //     // console.log(list);
+        
+        let weatherList = array[1].weather;
+
+        for(var property in weatherList) {
+            // alert(property + "=" + weatherList[property]);
+            console.log(weatherList[property]);
         }
 
-        return list;
-        // console.log(list);
+
 }
 
 function unixDateExtraction(unix){

@@ -1,5 +1,140 @@
 
-#paraTest{
-    color: red;
-    font-size: 100px;
+#backgroundImage{
+    background-attachment: fixed;
 }
+
+#navBar{
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, .5);
+    font: rgba(255, 255, 255, 0.1);
+}
+
+#homeLabel{
+    color: black;
+}
+
+#homeIcon{
+    padding: 10px;
+    
+}
+
+#weather-table{
+    box-shadow: 0px 31px 35px -26px #080c21;
+}
+
+#wind-direction{
+    font-family:"Segoe UI Symbol";
+}
+
+
+*
+{
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+
+div.summary-widget
+{
+  position: relative;
+  width: 400px;
+  height: 200px;
+  margin: 100px auto;
+  background-color: #fcfdfd;
+  
+  border-radius: 9px;
+  padding: 25px;
+  padding-right: 10px;
+  box-shadow: 0px 31px 35px -26px #080c21;
+}
+
+
+.image-divider{
+    /* position: absolute; */
+    /* background-image: url('https://images.unsplash.com/photo-1595892908898-3e2631c321dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+    background-size:cover; */
+    /* background-color:dodgerblue; */
+    width: 230px;
+    height: 200px;
+    border-radius: 9px 0px 0px 9px;
+    /* margin: -25px; */
+    opacity: 0.5;
+    
+}
+
+.tint{
+    width: 230px;
+    height: 200px;
+    border-radius: 9px 0px 0px 9px;
+    margin: -25px;
+    background: coral;
+}
+
+div.left-panel
+{
+    font-family: 'Roboto', sans-serif;
+    
+     
+}
+
+.left-details{
+    position: absolute;
+  float: left;
+  margin-left: 10px;
+  top: 20px;
+  margin-top: 10px;
+  /* right: 0; */
+}
+
+div.date
+{
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(0,0,0,0.5);
+}
+
+div.location
+{
+  font-size: 21px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: 5px;
+  color: rgba(0,0,0,0.7);
+}
+
+div.temp-conditions
+{
+  font-size: 60px;
+  color: rgba(0,0,0,0.9);
+  font-weight: 100;
+}
+div.temp
+{
+  font-size: 50px;
+  color: rgba(0,0,0,0.9);
+  font-weight: 100;
+  text-align: right;
+}
+
+div.panel
+{
+  display: inline-block;
+  /* padding-left: 10px;
+  padding-inline: 20px; */
+  z-index: 99;
+  
+}
+
+div.right-panel
+{
+  position: absolute;
+  float: right;
+  margin-right: 10px;
+  top: 0;
+  margin-top: 10px;
+  right: 0;
+  /* padding-left: 10px; */
+  font-family: 'Roboto', sans-serif;
+  
+} 

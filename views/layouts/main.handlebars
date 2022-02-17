@@ -9,6 +9,9 @@
 
     {{!-- My Stylesheet --}}
    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+   {{!-- Additional Weather Icons --}}
+    <link href="css/owfont-regular.css" rel="stylesheet" type="text/css">
     
     {{!-- Bootstrap --}}
      <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,23 +19,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-   
-
-    <script src="https://kit.fontawesome.com/4dfa17635e.js" crossorigin="anonymous"></script>
+    
     <script src="../../modules/data.js"></script>
+
+
+{{!-- Font Awesome --}}
+    <script src="https://kit.fontawesome.com/4dfa17635e.js" crossorigin="anonymous"></script>
+
+  {{!-- Custom Fonts --}}
+    <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');</style>
+
+    
     
 </head>
-{{!-- https://images.unsplash.com/photo-1483083850282-fc55aec90f56?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2224&q=80
-https://images.unsplash.com/photo-1507710688223-80d61fb2251a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80 --}}
 
 <body class="bg-image" style="background-image: url('images/morten-soerensen-Fm2aEv7uqYk-unsplash.jpg');
-            background-repeat: no-repeat; background-size: cover; background-position: center; height:100vh">
+            background-repeat: no-repeat; background-size: cover; background-position: center; height:100vh" id="backgroundImage">
 
-     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+     {{!-- <nav class="navbar navbar-expand-lg navbar-dark" id="navBar">
          <div class="navbar-header">
             
-             <a class="navbar-brand" href="/" >Home</a>
+             <a class="navbar-brand" href="/" id="homeLabel" >Home<i class="fa-solid fa-house"></i></a>
          </div>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -46,7 +53,13 @@ https://images.unsplash.com/photo-1507710688223-80d61fb2251a?ixlib=rb-1.2.1&ixid
               
           </ul>
         </div>  
-    </nav>
+    </nav> --}}
+    {{!-- <a href="/" class="btn btn-primary btn-lg" role="button" id="homeicon" ><i class="fa-solid fa-house"  style="color: white;"></i></a> --}}
+
+   <div class="nav-menu" id="homeIcon">
+            <a href="/"><i class="fa fa-home" style="color: white;" id="homeImage"></i></a>
+
+    </div>
 
     
 

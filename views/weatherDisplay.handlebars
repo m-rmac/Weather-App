@@ -1,46 +1,95 @@
-<p id="paraTest">TEST</p>
-
 <div class="container" id="weatherForm" style="padding-top: 20px; padding-bottom: 20px;">
-<div class="card">
-    <div class="card-header">
-        {{#if location}} {{location}} {{else}} LOCATION {{/if}}
-    </div>
-    <div class="card-body">
-        This is a test 
-    </div>
-</div>
-</div>
 
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        {{!-- <th>Date</th> --}}
-                        <th>Time</th>
-                        <th>Wind Direction</th>
-                        <th>Wind Speed</th>
-                        <th>Tempreture</th>
-                        <th>Clouds</th>
-                        <th>Visibility</th>
-                    </tr>
-                </thead>
+    <div class="summary-widget">
+        {{!-- <div class="image-divider"> --}}
+            {{!-- <img  class="full-width" src='https://images.unsplash.com/photo-1595892908898-3e2631c321dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'> --}}
+        <div class="left-panel panel" >
+            <figure class="tint">
+            <img  class="image-divider" src='https://images.unsplash.com/photo-1595892908898-3e2631c321dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'>
+            </figure>
+         <div class="left-details">  
+            <div class="date">{{dateFormat current.dt}}</div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> {{location}}</div>
+        
+        <div class="temp-conditions">
+            {{#each current.weather}}   
+            <img src="http://openweathermap.org/img/wn/{{icon}}@2x.png">            
+            {{/each}}
+            {{!-- {{current.temp}}&deg; --}}
+            
+        </div>
+        </div> 
+        </div>
 
-                <tbody>
-                    {{#each hourly}}
-                    <tr>
-                        {{!-- <td>{{foo}}</td> --}}
-                        <td>{{unixDate this.dt}} <br> {{unixTime this.dt}}</td>
-                        <td>{{this.wind_deg}} <br> {{getCardinalDirections this.wind_deg}}</td>
-                        <td>{{this.wind_speed}}</td>
-                        <td>{{this.temp}} &#176;C</td>
-                        <td>{{this.clouds}}</td>
-                        <td>{{this.visibility}}</td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+        
+        <div class="right-panel panel">
+            <div class="temp">
+                {{current.temp}}&deg; <br>
+            </div>
+            
+            <div class="current-wind">
+            Direction: {{getCardinalDirections current.wind_deg}} <br>
+            Speed: {{current.wind_speed}}m/s
+            </div>
+            
+        
+    </div>
+    {{!-- </div> --}}
+    </div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="card-body">
+                This is a test 
+            </div>
+
+        </div>
+
+
+
+        <div class="card" id="weather-table">
+            {{!-- <div class="card-body"> --}}
+                <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            {{!-- <th>Date</th> --}}
+                            <th>Time</th>
+                            <th>Weather</th>
+                            <th>Wind Direction</th>
+                            <th>Wind Speed</th>
+                            <th>Tempreture</th>
+                            <th>Clouds</th>
+                            <th>Visibility</th>
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each hourly}}
+                        <tr>
+                            <td>{{unixDate this.dt}} <br> {{unixTime this.dt}}</td>
+                                {{#each this.weather}}
+                                    <td>{{description}}<br>owf owf-{{id}}
+                                    {{!-- <img class="weather-icons" src="http://openweathermap.org/img/wn/{{icon}}@2x.png"> --}}
+                                    <i class="owf owf-{{id}}"></i>
+                                    </td>
+                                {{/each}}
+                            <td id="wind-direction">{{this.wind_deg}}&#176; <br> {{getCardinalDirections this.wind_deg}}</td>
+                            <td>{{this.wind_speed}}m/s</td>
+                            <td>{{this.temp}} &#176;C</td>
+                            <td>{{this.clouds}}</td>
+                            <td>{{this.visibility}}</td>
+                            
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                </div>
+            {{!-- </div> --}}
         </div>
     </div>
 </div>

@@ -12,11 +12,18 @@ app.engine("handlebars",
         helpers:{
             unixTime: (unix) => new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' }),
             unixDate: (unix) => new Date(unix*1000).toLocaleDateString("en-NZ", { timeZone: 'Pacific/Auckland' }),
+            unixDay: (unix) => { const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const dayNumber = new Date(unix*1000).getUTCDay("en-NZ", { timeZone: 'Pacific/Auckland' });
+            return days[dayNumber]},
             getCardinalDirections: (angle) => {const directions = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
-            return directions[Math.round(angle / 45) % 8]}
+            return directions[Math.round(angle / 45) % 8]},
+            dateFormat: (unix) => { var date = new Date(unix*1000).toLocaleString("en-NZ", {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'} );
+                return date},
+            slice: (string) => string.slice(0, -1)
         }
     })
 );
+
 
 
 app.set("view engine", "handlebars");
