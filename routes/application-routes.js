@@ -65,7 +65,7 @@ router.post("/weather", async (req, res)=>{
 
     res.locals.hourly = locationForecast.hourly;
 
-    let weatherArray = data.arrayExtractor(locationForecast.hourly);
+    // let weatherArray = data.arrayExtractor(locationForecast.hourly);
     // console.log(weatherArray);
 
     // console.log(locationForecast.hourly.weather);

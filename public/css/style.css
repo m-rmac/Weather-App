@@ -46,7 +46,7 @@ div.summary-widget
   border-radius: 9px;
   padding: 25px;
   padding-right: 10px;
-  box-shadow: 0px 31px 35px -26px #080c21;
+  box-shadow: 0px 20px 40px -26px #080c21;
 }
 
 
@@ -68,12 +68,14 @@ div.summary-widget
     height: 200px;
     border-radius: 9px 0px 0px 9px;
     margin: -25px;
-    background: coral;
+    background: rgb(218, 82, 32);
+    background: rgb(32, 218, 162);
 }
 
 div.left-panel
 {
     font-family: 'Roboto', sans-serif;
+    align-items: center;
     
      
 }
@@ -82,9 +84,9 @@ div.left-panel
     position: absolute;
   float: left;
   margin-left: 10px;
-  top: 20px;
+  top: 60px;
   margin-top: 10px;
-  /* right: 0; */
+  max-width: 230px;
 }
 
 div.date
@@ -101,21 +103,9 @@ div.location
   text-transform: uppercase;
   padding-top: 5px;
   color: rgba(0,0,0,0.7);
+  
 }
 
-div.temp-conditions
-{
-  font-size: 60px;
-  color: rgba(0,0,0,0.9);
-  font-weight: 100;
-}
-div.temp
-{
-  font-size: 50px;
-  color: rgba(0,0,0,0.9);
-  font-weight: 100;
-  text-align: right;
-}
 
 div.panel
 {
@@ -130,11 +120,37 @@ div.right-panel
 {
   position: absolute;
   float: right;
-  margin-right: 10px;
+  margin-right: 20px;
   top: 0;
-  margin-top: 10px;
+  margin-top: 5px;
   right: 0;
   /* padding-left: 10px; */
   font-family: 'Roboto', sans-serif;
   
 } 
+
+div.temp
+{
+  font-size: 45px;
+  color: rgba(0,0,0,0.9);
+  font-weight: 100;
+  text-align: right;
+  max-height: 60px;
+}
+
+.current-wind{
+  /* padding-top: 10px; */
+  text-align: center;
+  
+}
+
+div.current-conditions
+{
+  /* font-size: 60px;
+  color: rgba(0,0,0,0.9);
+  font-weight: 100; */
+  text-align: center;
+  align-content: center;
+  max-height: 60px;
+  margin-bottom: 10px;
+}

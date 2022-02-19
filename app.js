@@ -13,13 +13,14 @@ app.engine("handlebars",
             unixTime: (unix) => new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' }),
             unixDate: (unix) => new Date(unix*1000).toLocaleDateString("en-NZ", { timeZone: 'Pacific/Auckland' }),
             unixDay: (unix) => { const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const dayNumber = new Date(unix*1000).getUTCDay("en-NZ", { timeZone: 'Pacific/Auckland' });
+            const dayNumber = new Date(unix*1000).getDay("en-NZ", { timeZone: 'Pacific/Auckland' });
             return days[dayNumber]},
             getCardinalDirections: (angle) => {const directions = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
             return directions[Math.round(angle / 45) % 8]},
-            dateFormat: (unix) => { var date = new Date(unix*1000).toLocaleString("en-NZ", {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'} );
+            dateFormat: (unix) => { var date = new Date(unix*1000).toLocaleString("en-NZ", {timeZone: 'Pacific/Auckland', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'} );
                 return date},
-            slice: (string) => string.slice(0, -1)
+            knots: (wind) => (wind/0.51444444444444).toFixed(1),
+            onedp: (number)=> number.toFixed(1)
         }
     })
 );
