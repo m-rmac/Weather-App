@@ -2,11 +2,20 @@
 const express = require("express");
 const data = require("../modules/data");
 const locationData = require("../modules/locations-dao");
+// const onPage = require("../modules/onPage");
 
 // Express Router
 const router = express.Router();
 
 const fs = require('fs');
+const res = require("express/lib/response");
+const { dir } = require("console");
+
+// Current location data 
+
+let currentHourly; 
+let currentPt;
+let currentLocation;
 
 
 // Home 
@@ -44,7 +53,7 @@ router.post("/weather", async (req, res)=>{
     // Retrieves Location Request 
 
     const location = req.body.location;
-
+    currentLocation = location;
 
     // Retrieve Coordinates from Database and Populate table
 
@@ -60,15 +69,12 @@ router.post("/weather", async (req, res)=>{
 
     res.locals.current = locationForecast.current;
 
-    const testArray = locationForecast.current.weather;
-    // console.log(testArray);
+    currentPt = locationForecast.current;
 
     res.locals.hourly = locationForecast.hourly;
 
-    // let weatherArray = data.arrayExtractor(locationForecast.hourly);
-    // console.log(weatherArray);
-
-    // console.log(locationForecast.hourly.weather);
+    currentHourly = locationForecast.hourly;
+        // console.log(locationForecast.hourly);
 
     }catch(err){
         console.log(err);
@@ -79,6 +85,61 @@ router.post("/weather", async (req, res)=>{
 });
 
 
+// Add filter 
 
+router.post("/addConditionsFilter", (req, res) => {
+
+const minKnots = req.body.rangeMin;
+const maxKnots = req.body.rangeMax;
+console.log(minKnots);
+
+const direction = req.body.direction;
+
+
+maxWind = function(item){
+    
+    return item.wind_speed < (maxKnots *0.51444444444444)&&
+    item.wind_speed > (minKnots *0.51444444444444);
+    
+}
+
+filter1 = currentHourly.filter(maxWind);
+
+direction_filter = function(item){
+    let conversion = data.getCardinalDirection(item); 
+    if(direction){
+        for (let i = 0; i < direction.length; i++) {
+            const e = direction[i];
+            
+            
+        }
+    }
+}
+
+// Add Data
+
+try{
+
+
+    res.locals.location = currentLocation;
+
+    res.locals.current = currentPt;
+    console.log(currentLocation);
+
+
+    res.locals.hourly = filter1;
+    // console.log(filterHourly);
+
+    }catch(err){
+        console.log(err);
+    }
+
+// console.log(current);
+
+res.render("weatherDisplay");
+
+
+
+});
 
 module.exports = router;

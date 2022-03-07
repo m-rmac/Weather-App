@@ -1,3 +1,5 @@
+
+<body>
 <div class="container" id="weatherForm" style="padding-top: 20px; padding-bottom: 20px;">
 
     <div class="summary-widget">
@@ -37,54 +39,92 @@
     </div>
 
 
+
     <div class="container">
 
         <div class="card">
 
-            <div class="card-body">
-                
-                <form  action="/addConditionsFilter" method="post" enctype="multipart/form-data">
+            <div class="card-body" id="filter-card">
+                <span>Filter Results</span>
+                <form  action="/addConditionsFilter" method="POST">
+
+                <div class="filter-left">
+                <span>Wind Speed</span>
+
+                 {{!-- <div class="filter-left">--}}
+                    <div class="wrapper">
+                        <div class="range-container">
+                            <div class="slider-track"></div>
+                            <input type="range" min="0" max="50" value="5" id="slider-1" name="rangeMin" oninput="slideOne()">
+                            <input type="range" min="0" max="50" value="30" id="slider-2" name="rangeMax" oninput="slideTwo()">
+                        </div>
+                            
+                        <div class="values">
+                            <span id="range1">0</span>
+                            <span> &dash; </span>
+                            <span id="range2">100</span>
+                            <span> knots </span>
+                        </div>
+
+                    </div>
+                 {{!-- </div>   --}}
+
+                    <script src = "onPage.js"></script>
+                </div>
 
                     {{!-- Filter by wind direction --}}
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">Default checkbox </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1">1</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1">1</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked"> Checked checkbox</label>
-                    </div>
-
-                        <div class="pcontainer">
-                            
-                            <form class="multi-range-field my-5 pb-5">
-                                <input id="multi3" class="multi-range" type="range" />
-                            </form>
-                           
-                           
+                <div class="filter-right">
+                    <div class="direction-filter">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="north" name="direction" value="↑ N">
+                            <label class="form-check-label" for="inlineCheckbox1">↑ N</label>
                         </div>
 
-
-                            <button type="submit" class="long-button">Submit</button>
-                        
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="north-east" name="direction" value="↗ NE">
+                            <label class="form-check-label" for="inlineCheckbox1">↗ NE</label>
+                        </div>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="east" name="direction" value="→ E">
+                            <label class="form-check-label" for="inlineCheckbox1">→ E</label>
                         </div>
 
-                        <div class="cancel-container">
-
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="south-east" name="direction" value="↘ SE">
+                            <label class="form-check-label" for="inlineCheckbox1">↘ SE</label>
                         </div>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="south" name="direction" value="↓ S">
+                            <label class="form-check-label" for="inlineCheckbox1">↓ S</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="south-west" name="direction" value="↙ SW">
+                            <label class="form-check-label" for="inlineCheckbox1">↙ SW</label>
+                        </div>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="west" name="direction" value="← W">
+                            <label class="form-check-label" for="inlineCheckbox1">← W</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="north-west" name="direction" value="↖ NW">
+                            <label class="form-check-label" for="inlineCheckbox1">↖ NW</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="apply-filter">
+                            <button type="submit">Apply Filter</button>
+                     </div> 
 
                     </form>
+                        
+                </div>
+
+                    
 
             </div>
 
@@ -136,3 +176,5 @@
         </div>
     </div>
 </div>
+
+</body>

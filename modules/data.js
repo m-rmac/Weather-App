@@ -49,7 +49,7 @@ function arrayExtractor(array){
     //     return list;
     //     // console.log(list);
         
-        let weatherList = array[1].weather;
+        let weatherList = array.weather;
 
         for(var property in weatherList) {
             // alert(property + "=" + weatherList[property]);
@@ -78,6 +78,9 @@ function getCardinalDirection(angle) {
     return directions[Math.round(angle / 45) % 8];
 }
 
+
+
+
 module.exports.register = function (Handlebars, options)  { 
     Handlebars.registerHelper('foo', function (str)  { 
       return  str;
@@ -90,5 +93,6 @@ module.exports = {
     extractData,
     arrayExtractor,
     unixDateExtraction,
-    degToCompass
+    degToCompass,
+    getCardinalDirection
 };
