@@ -34,9 +34,26 @@
   outline: none;
 }
 
+.first-row{
+  display: flex;
+  flex-direction: row;
+}
 
 div.summary-widget
 {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  margin: 100px auto;
+  background-color: #fcfdfd;
+  
+  border-radius: 9px;
+  padding: 25px;
+  padding-right: 10px;
+  box-shadow: 0px 20px 40px -26px #080c21;
+}
+
+div.filter-container{
   position: relative;
   width: 400px;
   height: 200px;

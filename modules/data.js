@@ -23,38 +23,38 @@ function extractData(data){
 
     // document.querySelector("#test").innerHTML = `${data.timezone}`;
 
-    console.log(data.timezone);
+    // console.log(data.timezone);
 
     return data.timezone;
 }
 
 function arrayExtractor(array){
 
-    // let list=" ";
+    let list=" ";
 
-    //     for (let i = 0; i < array.length; i++) {
-    //         list += `${array[1]}.weather`;
+        for (let i = 0; i < array.length; i++) {
+            list += getCardinalDirection(array[1].wind_deg);
 
-    //         for(var property in weather) {
-    //             alert(property + "=" + weather[property]);
-    //         }
+            // for(var property in weather) {
+            //     alert(property + "=" + weather[property]);
+            // }
 
-    //         if(i>= (array.length - 1)){
-    //             list +=".";
-    //         }else{
-    //             list +=", ";
-    //         }
-    //     }
-
-    //     return list;
-    //     // console.log(list);
-        
-        let weatherList = array.weather;
-
-        for(var property in weatherList) {
-            // alert(property + "=" + weatherList[property]);
-            console.log(weatherList[property]);
+            if(i>= (array.length - 1)){
+                list +=".";
+            }else{
+                list +=", ";
+            }
         }
+
+        return list;
+        // console.log(list);
+        
+        // let weatherList = array.weather;
+
+        // for(var property in weatherList) {
+        //     // alert(property + "=" + weatherList[property]);
+        //     console.log(weatherList[property]);
+        // }
 
 
 }

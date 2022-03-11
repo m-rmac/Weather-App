@@ -2,6 +2,7 @@
 <body>
 <div class="container" id="weatherForm" style="padding-top: 20px; padding-bottom: 20px;">
 
+<div class="first-row">
     <div class="summary-widget">
         {{!-- <div class="image-divider"> --}}
             {{!-- <img  class="full-width" src='https://images.unsplash.com/photo-1595892908898-3e2631c321dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'> --}}
@@ -38,20 +39,13 @@
     {{!-- </div> --}}
     </div>
 
-
-
-    <div class="container">
-
-        <div class="card">
-
-            <div class="card-body" id="filter-card">
-                <span>Filter Results</span>
-                <form  action="/addConditionsFilter" method="POST">
-
-                <div class="filter-left">
+    <div class="summary-widget">
+        <div>
                 <span>Wind Speed</span>
 
                  {{!-- <div class="filter-left">--}}
+                     <span>Filter Results</span>
+                <form  action="/addConditionsFilter" method="POST">
                     <div class="wrapper">
                         <div class="range-container">
                             <div class="slider-track"></div>
@@ -70,65 +64,44 @@
                  {{!-- </div>   --}}
 
                     <script src = "onPage.js"></script>
-                </div>
 
-                    {{!-- Filter by wind direction --}}
-                <div class="filter-right">
-                    <div class="direction-filter">
+                     <div class="direction-filter">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="north" name="direction" value="↑ N">
                             <label class="form-check-label" for="inlineCheckbox1">↑ N</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
+                       
                             <input class="form-check-input" type="checkbox" id="north-east" name="direction" value="↗ NE">
                             <label class="form-check-label" for="inlineCheckbox1">↗ NE</label>
-                        </div>
-                        <br>
-                        <div class="form-check form-check-inline">
+                       
                             <input class="form-check-input" type="checkbox" id="east" name="direction" value="→ E">
                             <label class="form-check-label" for="inlineCheckbox1">→ E</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
+                    
                             <input class="form-check-input" type="checkbox" id="south-east" name="direction" value="↘ SE">
                             <label class="form-check-label" for="inlineCheckbox1">↘ SE</label>
-                        </div>
-                        <br>
-                        <div class="form-check form-check-inline">
+                        
                             <input class="form-check-input" type="checkbox" id="south" name="direction" value="↓ S">
                             <label class="form-check-label" for="inlineCheckbox1">↓ S</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
+                        
                             <input class="form-check-input" type="checkbox" id="south-west" name="direction" value="↙ SW">
                             <label class="form-check-label" for="inlineCheckbox1">↙ SW</label>
-                        </div>
-                        <br>
-                        <div class="form-check form-check-inline">
+            
                             <input class="form-check-input" type="checkbox" id="west" name="direction" value="← W">
                             <label class="form-check-label" for="inlineCheckbox1">← W</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
+                        
                             <input class="form-check-input" type="checkbox" id="north-west" name="direction" value="↖ NW">
                             <label class="form-check-label" for="inlineCheckbox1">↖ NW</label>
                         </div>
                     </div>
-                    </div>
-                    <div class="apply-filter">
-                            <button type="submit">Apply Filter</button>
-                     </div> 
+
+
+
 
                     </form>
-                        
                 </div>
 
-                    
-
-            </div>
-
-        </div>
+    </div>
+    
+</div>
 
 
 
@@ -140,40 +113,62 @@
                         <tr>
                             {{!-- <th>Date</th> --}}
                             <th>Time</th>
-                            <th>Weather</th>
-                            <th>Wind Direction</th>
-                            <th>Wind Speed</th>
-                            <th>Tempreture</th>
-                            <th>Clouds</th>
-                            <th>Visibility</th>
-                            
-                        </tr>
-                    </thead>
 
-                    <tbody>
-                        {{#each hourly}}
-                        <tr>
-                            <td>{{unixDate this.dt}} <br> {{unixTime this.dt}}</td>
-                                {{#each this.weather}}
-                                    <td>{{description}}<br>
-                                    {{!-- <img class="weather-icons" src="http://openweathermap.org/img/wn/{{icon}}@2x.png"> --}}
-                                    {{!-- <i class="owf owf-{{id}}"></i> --}}
-                                    <i class="owi owi-{{icon}} owi-3x"></i>
-                                    </td>
-                                {{/each}}
-                            <td id="wind-direction"> <br> {{this.wind_deg}}</td>
-                            {{!-- {{this.wind_deg}}&#176; --}}
-                            <td>{{knots this.wind_speed}} knots</td>
-                            <td>{{onedp this.temp}} &#176;C</td>
-                            <td>{{this.clouds}}</td>
-                            <td>{{this.visibility}}</td>
-                            
+                            {{#each hourly}}
+                        
+                                <td>{{unixDate this.dt}} <br> {{unixTime this.dt}}</td>
+                                
+                            {{/each}}
                         </tr>
+                            
+                        <tr><th>Weather</th>
+                            {{#each hourly}}
+                                {{#each this.weather}}
+                                    <td class="table-icons"><i class="owi owi-{{icon}} owi-2x"></i></td>
+                                {{/each}}
+                            {{/each}}
+                        
+                        </tr>
+
+                        <tr><th>Wind Direction</th>
+                        {{#each hourly}}
+                            <td id="wind-direction">{{getCardinalDirections this.wind_deg}}</td>
                         {{/each}}
-                    </tbody>
+                        
+                        </tr>
+                        <tr><th>Wind Speed</th>
+                        {{#each hourly}}
+                            <td>{{knots this.wind_speed}}<br/> knots</td>
+                        {{/each}}
+                        
+                        </tr>
+                        <tr><th>Tempreture</th>
+                        {{#each hourly}}
+                            <td>{{onedp this.temp}} &#176;C</td>
+                        {{/each}}
+                        
+                        </tr>
+                        <tr><th>Clouds</th>
+                        {{#each hourly}}
+                            <td>{{this.clouds}}</td>
+                        {{/each}}
+                        
+                        </tr>
+                        <tr><th>Visibility</th>
+                        {{#each hourly}}
+                            <td>{{this.visibility}}</td>
+                        {{/each}}
+                        
+                        </tr>
+                               
+                    </thead>
+{{!-- 
+                    <tbody>
+                       
+                    </tbody> --}}
                 </table>
                 </div>
-            {{!-- </div> --}}
+            
         </div>
     </div>
 </div>

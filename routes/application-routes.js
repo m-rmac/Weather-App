@@ -71,10 +71,11 @@ router.post("/weather", async (req, res)=>{
 
     currentPt = locationForecast.current;
 
-    res.locals.hourly = locationForecast.hourly;
+    let test = locationForecast.hourly;
 
-    currentHourly = locationForecast.hourly;
-        // console.log(locationForecast.hourly);
+    currentHourly = test.filter(item => item.wind_deg = data.getCardinalDirection(item.wind_deg));
+        // console.log(currentHourly);
+        res.locals.hourly = currentHourly;
 
     }catch(err){
         console.log(err);
@@ -91,9 +92,15 @@ router.post("/addConditionsFilter", (req, res) => {
 
 const minKnots = req.body.rangeMin;
 const maxKnots = req.body.rangeMax;
-console.log(minKnots);
+// console.log(minKnots);
+
+let conditionsFilter;
 
 const direction = req.body.direction;
+
+let windDeg = currentHourly;
+// .filter(item => item.wind_deg = data.getCardinalDirection(item.wind_deg));
+// console.log(textConvert);
 
 
 maxWind = function(item){
@@ -103,18 +110,19 @@ maxWind = function(item){
     
 }
 
-filter1 = currentHourly.filter(maxWind);
+if(direction){
 
-direction_filter = function(item){
-    let conversion = data.getCardinalDirection(item); 
-    if(direction){
-        for (let i = 0; i < direction.length; i++) {
-            const e = direction[i];
-            
-            
-        }
-    }
-}
+let windDegFilter = windDeg.filter(item => direction.includes(item.wind_deg));
+
+let windFilter = windDegFilter.filter(maxWind);
+// console.log(filter1);
+
+conditionsFilter = windFilter;
+
+console.log(windFilter);
+}else{conditionsFilter = currentHourly;}
+
+
 
 // Add Data
 
@@ -124,10 +132,10 @@ try{
     res.locals.location = currentLocation;
 
     res.locals.current = currentPt;
-    console.log(currentLocation);
+    // console.log(currentLocation);
 
 
-    res.locals.hourly = filter1;
+    res.locals.hourly = conditionsFilter;
     // console.log(filterHourly);
 
     }catch(err){
@@ -135,8 +143,8 @@ try{
     }
 
 // console.log(current);
-
 res.render("weatherDisplay");
+// res.redirect("/weather");
 
 
 
