@@ -10,8 +10,8 @@ app.engine("handlebars",
     handlebars({
         defaultLayout: "main",
         helpers:{
-            unixTime: (unix) => new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' }),
-            unixDate: (unix) => new Date(unix*1000).toLocaleDateString("en-NZ", { timeZone: 'Pacific/Auckland' }),
+            unixTime: (unix) => new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland', hour: 'numeric'}),
+            unixDate: (unix) => new Date(unix*1000).toLocaleDateString("en-NZ", { timeZone: 'Pacific/Auckland', day: 'numeric', month: 'numeric' }),
             unixDay: (unix) => { const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const dayNumber = new Date(unix*1000).getDay("en-NZ", { timeZone: 'Pacific/Auckland' });
             return days[dayNumber]},

@@ -22,31 +22,12 @@ let currentLocation;
 
 router.get("/",  async (req, res) => {
 
-    let test = await data.retrieveWeather(-36.848516, 174.856328);
-    // console.log(test);
-
-    let sunrise = test.timezone;
-
-    
-
-    res.locals.weatherData = sunrise;
 
 res.render("home");
 
 }); 
 
-// router.get("/weather", async (req, res) => {
 
-//     res.locals.location = test.timezone;
-
-//     let dateTest = data.unixDateExtraction(test.current.dt);
-//     console.log(dateTest);
-
-//     res.locals.hourly = test.hourly;
-
-//     res.render("weatherDisplay");
-
-// });
 
 router.post("/weather", async (req, res)=>{
 
@@ -82,7 +63,7 @@ router.post("/weather", async (req, res)=>{
     }
 
 
-    res.render("weatherDisplay");
+    res.render("weather");
 });
 
 
@@ -119,8 +100,8 @@ let windFilter = windDegFilter.filter(maxWind);
 
 conditionsFilter = windFilter;
 
-console.log(windFilter);
-}else{conditionsFilter = currentHourly;}
+// console.log(windFilter);
+}else{conditionsFilter = currentHourly.filter(maxWind);}
 
 
 
@@ -143,7 +124,7 @@ try{
     }
 
 // console.log(current);
-res.render("weatherDisplay");
+res.render("weather");
 // res.redirect("/weather");
 
 
