@@ -20,7 +20,21 @@ app.engine("handlebars",
             dateFormat: (unix) => { var date = new Date(unix*1000).toLocaleString("en-NZ", {timeZone: 'Pacific/Auckland', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'} );
                 return date},
             knots: (wind) => (wind/0.51444444444444).toFixed(1),
-            onedp: (number)=> number.toFixed(1)
+            onedp: (number)=> number.toFixed(1),
+            ifIn: (array, item) => {
+
+                if(! Array.isArray(array)){
+                    array = [array];
+                }
+
+                var found = false;
+                    for(var i = 0; i < array.length; i++) {
+                        if (array[i] == item) {
+                            found = true;
+                            return "checked";
+                        }
+                    }
+                }
         }
     })
 );

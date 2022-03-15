@@ -75,9 +75,19 @@ const minKnots = req.body.rangeMin;
 const maxKnots = req.body.rangeMax;
 // console.log(minKnots);
 
+// Update filter slider values
+res.locals.min = minKnots;
+res.locals.max = maxKnots;
+
 let conditionsFilter;
 
 const direction = req.body.direction;
+// if(direction){
+
+//     res.locals.directionFilter = direction;
+// }
+
+console.log(direction);
 
 let windDeg = currentHourly;
 // .filter(item => item.wind_deg = data.getCardinalDirection(item.wind_deg));
@@ -97,6 +107,7 @@ let windDegFilter = windDeg.filter(item => direction.includes(item.wind_deg));
 
 let windFilter = windDegFilter.filter(maxWind);
 // console.log(filter1);
+res.locals.directionFilter = direction;
 
 conditionsFilter = windFilter;
 
@@ -118,6 +129,8 @@ try{
 
     res.locals.hourly = conditionsFilter;
     // console.log(filterHourly);
+
+   
 
     }catch(err){
         console.log(err);
