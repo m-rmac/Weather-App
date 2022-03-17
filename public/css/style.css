@@ -50,11 +50,11 @@
   flex-direction: row;
 }
 
-div.weather-widget
+.weather-widget
 {
   position: relative;
   width: 300px;
-  height: 500px;
+  max-height: 500px;
   margin: 50px auto;
   background-color: #fcfdfdd3;
   
@@ -106,7 +106,7 @@ div.summary-widget
   box-shadow: 0px 20px 40px -26px #080c21;
 }
 
-div.filter-container{
+/* div.filter-container{
   position: relative;
   width: 400px;
   height: 200px;
@@ -117,10 +117,17 @@ div.filter-container{
   padding: 25px;
   padding-right: 10px;
   box-shadow: 0px 20px 40px -26px #080c21;
-}
+} */
 
 #filter-title{
   padding: 8px 12px;
+  /* width: 50%; */
+}
+
+#minimise{
+  /* margin-left: 50%; */
+  float: right;
+  cursor:pointer;
 }
 
 .filter-body{
@@ -134,6 +141,85 @@ div.filter-container{
 .range-values b{
   font-size: small;
   color: #999999;
+}
+
+
+
+@media (max-width: 1200px) {
+  .weather-details {
+    display: contents;
+  }
+  .summary-widget {
+    order: -1;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .button-reorder{
+    order: -1;
+    color: #080c21;
+  }
+
+  /* #filter-title{
+    width: 50%;
+  } */
+
+  .weather-widget{
+  order: 2;
+  position: relative;
+  width: 100%;
+  height: 85%;
+  margin: 50px auto;
+  background-color: #fcfdfdd3;
+  
+  border-radius: 9px;
+  padding: 0px;
+  /* padding-right: 10px; */
+  box-shadow: 0px 20px 40px -26px #080c21;
+  font-family: 'Roboto', sans-serif;
+}
+
+.filter-header{
+  
+  width: 100%;
+  height: 50px;
+  /* margin: -25px -25px; */
+  border-radius: 9px 9px 0px 0px;
+  background-color: rgb(189, 189, 189);
+  /* padding-right: 10px; */
+  margin-left: 0px;
+  
+
+}
+
+.filter-body{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0px 25px;
+  padding-top: 40px;
+  
+}
+
+.filter-body form{
+  width: 100%;
+}
+
+div.wrapper{
+  width: 45%;
+  float: left;
+  padding: 0px 0px;
+  padding-bottom: 5%;
+}
+
+.direction-filter{
+  width: 45%;
+  float: right;
+  padding-top:0px;
+  padding-bottom: 5%;
+}
+  
 }
 
 /* Direction checkbox styling */

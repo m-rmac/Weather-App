@@ -1,8 +1,6 @@
 window.onload = function(){
     slideOne();
     slideTwo();
-    slideOneSM();
-    slideTwoSM();
 }
 
 let sliderOne = document.getElementById("slider-1");
@@ -33,3 +31,25 @@ function fillColor(){
     percent2 = (sliderTwo.value / sliderMaxValue) * 100;
     sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
 }
+
+
+
+// Display Filter using button on smaller screens 
+let filterBox = document.getElementById("filter-box");
+let filterButton = document.getElementById("button-filter");
+
+function filterDisplay(){
+    if(filterBox.className === "weather-widget d-none d-xl-block"){
+        filterBox.classList = "weather-widget d-xl-block"
+        filterButton.classList = "btn btn-primary m-2 d-none";
+    }else{
+        filterBox.classList = "weather-widget d-none d-xl-block"
+        filterButton.classList = "btn btn-primary m-2 d-xl-none"
+    }
+}
+
+
+// function removeButton(){
+//     filterButton.classList = "btn btn-primary m-2 d-none";
+//     console.log("success!")
+// }
