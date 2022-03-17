@@ -87,7 +87,7 @@ const direction = req.body.direction;
 //     res.locals.directionFilter = direction;
 // }
 
-console.log(direction);
+// console.log(direction);
 
 let windDeg = currentHourly;
 // .filter(item => item.wind_deg = data.getCardinalDirection(item.wind_deg));

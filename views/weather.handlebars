@@ -1,5 +1,4 @@
 
-{{!-- <body id="weather-container"> --}}
 <div class="container-sm" style="margin-right: 4vw;margin-left: 4vw;">
 
 <div class="row ">
@@ -11,18 +10,12 @@
         <div class="filter-header">
                 <h3 id="filter-title" class="position-relative"><i class="fa fa-filter" style="color: gray;"></i>
                     <b>Filter Results</b>
-                    {{!-- <i id="minimise" class="fa fa-times-circle position-absolute" style="color:gray;" aria-hidden="true"></i> --}}
                     <a id="minimise" class="d-xl-none" onclick="filterDisplay()"><i class="fa fa-minus-square" style="color: gray;"></i></a>  
                     </h3>
-
-            {{!-- <button id="filter-button" class="btn btn-primary m-2 d-xl-none" onclick="filterDisplay()"><i class="fa fa-times-circle" style="color: white;"></i></button>   --}}
                 
             </div>  
         <div class="filter-body">
                 <form  action="/addConditionsFilter" method="POST">
-
-                
-                {{!-- <h6><b>Wind Speed</b></h6> --}}
                 
                     <div class="wrapper">
                         <h6 class="pb-3"><b>Wind Speed</b></h6>
@@ -39,8 +32,6 @@
 
                     </div>
 
-                    {{!-- <script src = "onPage.js"></script> --}}
-                    {{!-- <hr> --}}
 
                      <div class="direction-filter">
                          
@@ -60,7 +51,6 @@
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="east" name="direction" value="→ E" {{#if directionFilter}}{{ifIn directionFilter "→ E"}}{{/if}}>
                                 <label class="form-check-label" for="east">→ E</label>
-                                {{!-- {{#if directionFilter}}{{ifIn directionFilter "→ E"}}checked{{/if}} --}}
                             </div>
 
                             <div class="form-check form-check-inline">
@@ -152,7 +142,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            {{!-- <th>Date</th> --}}
+                            
                             <th class="affix">Time</th>
 
                             {{#each hourly}}
