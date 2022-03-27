@@ -8,5 +8,4 @@ Shakespeare Regional Park = (SE-SW)
 The Spit() = (-36.872585,174.881923)(S)
 
 Test Location
-
 33.44, -94.04

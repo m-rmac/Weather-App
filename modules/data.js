@@ -1,5 +1,7 @@
 
 const fetch = require("node-fetch");
+const locationData = require("../public/locationData");
+
 
 async function retrieveWeather(lat, lon){
 
@@ -19,53 +21,14 @@ async function retrieveWeather(lat, lon){
 
 }
 
-function extractData(data){
+function retireveLocationCoordinates(locationValue){
 
-    // document.querySelector("#test").innerHTML = `${data.timezone}`;
+    let locationJSON = locationData[locationValue];
 
-    // console.log(data.timezone);
-
-    return data.timezone;
-}
-
-function arrayExtractor(array){
-
-    let list=" ";
-
-        for (let i = 0; i < array.length; i++) {
-            list += getCardinalDirection(array[1].wind_deg);
-
-            // for(var property in weather) {
-            //     alert(property + "=" + weather[property]);
-            // }
-
-            if(i>= (array.length - 1)){
-                list +=".";
-            }else{
-                list +=", ";
-            }
-        }
-
-        return list;
-        // console.log(list);
-        
-        // let weatherList = array.weather;
-
-        // for(var property in weatherList) {
-        //     // alert(property + "=" + weatherList[property]);
-        //     console.log(weatherList[property]);
-        // }
-
+    return locationJSON;
 
 }
 
-function unixDateExtraction(unix){
-    // var date = new Date(unix*1000).toLocaleDateString("en-US");
-    var time = new Date(unix*1000).toLocaleTimeString("en-NZ", { timeZone: 'Pacific/Auckland' });
-    
-    return time;
-    
-}
 
 function degToCompass(num) {
     var val = Math.floor((num / 22.5) + 0.5);
@@ -80,19 +43,9 @@ function getCardinalDirection(angle) {
 
 
 
-
-module.exports.register = function (Handlebars, options)  { 
-    Handlebars.registerHelper('foo', function (str)  { 
-      return  str;
-    });
-  };
-
-
 module.exports = {
     retrieveWeather,
-    extractData,
-    arrayExtractor,
-    unixDateExtraction,
     degToCompass,
-    getCardinalDirection
+    getCardinalDirection,
+    retireveLocationCoordinates
 };
