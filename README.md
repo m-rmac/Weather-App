@@ -1,13 +1,13 @@
 # Kite Surfing Weather App
-___
-A web application which dynamically displays 3-days of weather data from user selection of 8 kite surfing hot spots around Auckland, NZ. Features a a results filter that enables users to select the wind conditions they desire. 
+
+A web application which dynamically displays 3-days of weather data (via openweather.org) from user selection of 8 kite surfing hot spots around Auckland, NZ. Features a a results filter that enables users to select the wind conditions they desire. 
 
 ## Deployment 
-___
+
 Deployed with Heroku at https://mrm-weather-app.herokuapp.com/
 
 ## Areas of Development
-___
+
 - Calling an API requiring a key and hiding it in an env file. 
 - Implementing custom handlebar helpers.
 - Bootstrap
@@ -15,7 +15,6 @@ ___
 
 
 ## Potential Future Features 
-___
 
 - Feature that allows users to add other popular locations (includes addition of database and google maps).
 - Addition of suggested conditions that are optimal for kite surfing specific to each location.
@@ -23,7 +22,6 @@ ___
 
 
 ## Get Started
-___
 
 From your command line, first clone this repo:
 
@@ -37,6 +35,8 @@ $ cd weather-app
 ### Remove current origin repository
 $ git remote remove origin
 ```
+
+To generate a unique API key for use, users should go to https://openweathermap.org/ and login/create a new account. The key can then be pasted directly into API call in data.js or in an env file to be called as is currently. 
 
 Then you can install the dependencies using NPM:
 
