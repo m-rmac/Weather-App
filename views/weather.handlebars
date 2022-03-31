@@ -1,16 +1,16 @@
 
-<div class="container-sm" style="margin-right: 4vw;margin-left: 4vw;">
+<div class="container-sm" id="weather-container">
 
-<div class="row ">
+<div class="row">
 
-    <div class="col-xl-3 col-lg-12 p-4">
+    <div class="col-xxl-3 col-xl-12 p-4 ">
  
-    <div id="filter-box" class="weather-widget d-none d-xl-block">
+    <div id="filter-box" class="weather-widget d-none d-xxl-block">
         
         <div class="filter-header">
                 <h3 id="filter-title" class="position-relative"><i class="fa fa-filter" style="color: gray;"></i>
                     <b>Filter Results</b>
-                    <a id="minimise" class="d-xl-none" onclick="filterDisplay()"><i class="fa fa-minus-square" style="color: gray;"></i></a>  
+                    <a id="minimise" class="d-xxl-none" onclick="filterDisplay()"><i class="fa fa-minus-square" style="color: gray;"></i></a>  
                     </h3>
                 
             </div>  
@@ -57,7 +57,7 @@
                                 <input class="form-check-input" type="checkbox" id="south-east" name="direction" value="↘ SE" {{#if directionFilter}}{{ifIn directionFilter "↘ SE"}}{{/if}}>
                                 <label class="form-check-label" for="south-east">↘ SE</label>
                             </div>
-                            <br/>
+                            {{!-- <br/> --}}
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="south" name="direction" value="↓ S" {{#if directionFilter}}{{ifIn directionFilter "↓ S"}}{{/if}}>
                                 <label class="form-check-label" for="south">↓ S</label>
@@ -95,7 +95,7 @@
     
                 
 
-    <div class="col-xl-9 col-lg-12 p-4 weather-details">
+    <div class="col-xxl-9 col-xl-12 p-4 weather-details ">
 
         <div class="summary-widget">
             
@@ -131,9 +131,9 @@
         
         </div>
         
-
-       <button id="button-filter" class="btn btn-primary m-2 d-xl-none" onclick="filterDisplay()"><i class="fa fa-filter" style="color: white;"></i></button>
-
+        <div class="w-100">
+            <button id="button-filter" class="btn btn-primary m-2 d-xxl-none" onclick="filterDisplay()"><i class="fa fa-filter" style="color: white;"></i></button>
+        </div>
     
         <div class="card" id="weather-table">
 
@@ -143,7 +143,7 @@
                     <thead>
                         <tr>
                             
-                            <th class="affix">Time</th>
+                            <th id="tim">Time</th>
 
                             {{#each hourly}}
                         
@@ -153,7 +153,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><th class="affix">Weather</th>
+                        <tr><th id="wea">Weather</th>
                             {{#each hourly}}
                                 {{#each this.weather}}
                                     <td class="table-icons"><i class="owi owi-{{icon}} owi-2x"></i></td>
@@ -162,31 +162,31 @@
                         
                         </tr>
 
-                        <tr><th class="affix">Wind Direction</th>
+                        <tr><th id="wd">Wind Direction</th>
                         {{#each hourly}}
                             <td id="wind-direction">{{this.wind_deg}}</td>
                         {{/each}}
                         
                         </tr>
-                        <tr><th class="affix">Wind Speed</th>
+                        <tr><th id="ws">Wind Speed</th>
                         {{#each hourly}}
                             <td>{{knots this.wind_speed}}<br/> knots</td>
                         {{/each}}
                         
                         </tr>
-                        <tr><th class="affix">Tempreture &deg;C</th>
+                        <tr><th id="tem">Tempreture &deg;C</th>
                         {{#each hourly}}
                             <td>{{onedp this.temp}}</td>
                         {{/each}}
                         
                         </tr>
-                        <tr><th class="affix">Clouds</th>
+                        <tr><th id="cl">Clouds</th>
                         {{#each hourly}}
                             <td>{{this.clouds}}</td>
                         {{/each}}
                         
                         </tr>
-                        <tr><th class="affix">Visibility</th>
+                        <tr><th id="vis">Visibility</th>
                         {{#each hourly}}
                             <td>{{this.visibility}}</td>
                         {{/each}}

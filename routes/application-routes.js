@@ -23,6 +23,9 @@ router.get("/",  async (req, res) => {
 
 router.post("/weather", async (req, res)=>{
 
+    // Establishes not Home 
+    res.locals.notHome = true;
+
     // Retrieves Location Request 
     const location = req.body.location;
 
@@ -31,7 +34,7 @@ router.post("/weather", async (req, res)=>{
 
     // Retrieves Location Coordinates
     const locationCoordinates = data.retireveLocationCoordinates(location);
-    console.log(locationCoordinates);
+    // console.log(locationCoordinates);
 
 
     try{
@@ -68,6 +71,9 @@ router.post("/weather", async (req, res)=>{
 
 
 router.post("/addConditionsFilter", (req, res) => {
+
+    // Establishes not Home 
+    res.locals.notHome = true;
 
     // Retrieve filter conditions
     const minKnots = req.body.rangeMin;
